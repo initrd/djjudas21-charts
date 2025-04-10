@@ -30,8 +30,6 @@ spec:
         emptyDir: {}
       - name: log
         emptyDir: {}
-      - name: saslpasswd
-        emptyDir: {}
       containers:
         - name: postfix
           securityContext:
@@ -47,8 +45,6 @@ spec:
             mountPath: /var/spool/postfix/public
           - name: log
             mountPath: /var/log
-          - name: saslpasswd
-            mountPath: /etc/postfix/sasl
           env:
             - name: SMTP_RELAY_HOST
               valueFrom:
@@ -83,8 +79,8 @@ spec:
             - name: SMTP_RELAY_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "smtp-relay.fullname" . }}
-                  key: smtp-relay-password
+                  name: {{ include "smtp-relay.saslPasswdSecretName" . }}
+                  key: {{ .Values.smtp-relay.secretKey }}
           ports:
             - name: smtp
               containerPort: 2525
