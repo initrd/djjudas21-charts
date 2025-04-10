@@ -345,6 +345,20 @@
           "title": "mynetworks",
           "type": "array"
         },
+        "secretName": {
+          "default": null,
+          "description": "Name of Kubernetes secret containing password for upstream SMTP server",
+          "required": [],
+          "title": "secretName",
+          "type": "string"
+        },
+        "secretKey": {
+          "default": "password",
+          "description": "Key of Kubernetes secret containing password for upstream SMTP server",
+          "required": [],
+          "title": "secretKey",
+          "type": "string"
+        },
         "password": {
           "default": "",
           "description": "Password for upstream SMTP server",

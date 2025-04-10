@@ -62,8 +62,8 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
-Create SASL auth string
+Create the name of the password secret
 */}}
-{{- define "smtp-relay.saslPasswd" -}}
-{{ .Values.smtp.host }} {{ .Values.smtp.username }}:{{ .Values.smtp.password }}
+{{- define "smtp-relay.saslPasswdSecretName" }}
+{{ .Values.smtp-relay.secretName | default (printf "%s-credentials" (include "smtp-relay.fullname")) }}
 {{- end }}
