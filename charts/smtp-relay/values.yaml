@@ -8,6 +8,10 @@ smtp:
   host: ""
   # -- Username for upstream SMTP server
   username: ""
+  # -- Name of the secret that contains the password
+  secretName: ""
+  # -- Key in the secret that contains the password
+  secretKey: ""
   # -- Password for upstream SMTP server
   password: ""
   # -- Hostname of THIS relay SMTP server
